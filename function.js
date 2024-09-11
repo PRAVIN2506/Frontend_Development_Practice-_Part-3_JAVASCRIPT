@@ -103,3 +103,78 @@ function operation(c,d,callback){
 
 console.log(operation(10,5,add));
 
+// 8.Fat Arrow function / arrow function (if there is only one statement we dont need to give return statement and curly braces , if more than one statement we have to give both)
+
+let s =(a,b)=>a+b;  //automatically create return statement implicitly
+
+console.log(s(10,20));
+
+        // whenever we are not returning anything from a function that time we will get the value as undefined
+        
+            let a=b=>{
+              console.log(b); //if we have only one parameter has to pass then no need of() in case of arrow function
+              return b;
+            }
+            
+            console.log(a(10));
+            
+            let c=function (b){ //if we passing one parameter that time () are mandatory
+              console.log(b)
+              return b;
+            }
+        
+            let d=(_)=>{
+              console.log("Arrow function");
+            }
+        
+            console.log(d());
+            
+            let e= function _() {
+              console.log("normal function");
+            }
+        
+            console.log(e());
+
+// 9.Nested Function (function inside another function is known as nested function)
+
+function ATM() {
+  var AccountNumber="2506110304"
+  var AccountHolderName="pravin"
+  console.log(`AccountNumber: ${AccountNumber} , AccountHolderName: ${AccountHolderName}`);
+  let Balance=500;
+  function deposit(params) {
+    var amount=parseInt(prompt("Enter the deposit amount"));
+    Balance+=amount
+
+    function credit(params) {
+      var CreditAmount=parseInt(prompt("Enter the credit amount"));
+      Balance-=CreditAmount;
+      return Balance;
+    }
+    return credit;
+  }
+  return deposit;
+}
+
+console.log(ATM()()())
+
+
+// 10.generator function   
+
+function* generateNumber(){
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+}
+
+var g=generateNumber();
+console.log(g.next().value); //1
+console.log(g.next().value); //2
+console.log(g.next().value); //3
+console.log(g.next().value); //4
+console.log(g.next().value); //undefined
+
+
+
+
